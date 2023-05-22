@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Match Prediction</title>
+</head>
+
+<body>
+    <br><br><br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header row">
+                        <div class="col-md-6">
+                            <b>Match Prediction</b>
+                        </div>
+                        <div class="text-md-right col-md-6">
+                            <a href="{{ url_for('index') }}">
+                                <button class="btn btn-primary">Back</button>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="/predict_match">
+                            <div class="form-group row">
+                                <label for="name" class="col-md-4 col-form-labeltext-md-right">Team 1</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="team1" required="true">
+                                        <option selected="true" disabled="true">Select Team1</option>
+                                        <option value=1>Mumbai Indians</option>
+                                        <option value=2>Kolkata Knight Riders</option>
+                                        <option value=3>Royal ChallengersBangalore</option>
+                                        <option value=5>Chennai Super Kings</option>
+                                        <option value=6>Rajasthan Royals</option>
+                                        <option value=8>Delhi Capitals</option>
+                                        <option value=10>Punjab Kings</option>
+                                        <option value=11>Sunrisers Hyderabad</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="desc" class="col-md-4 col-form-labeltext-md-right">Team 2</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="team2" required>
+                                        <option hidden>Select Team 2</option>
+                                        <option value=1>Mumbai Indians</option>
+                                        <option value=2>Kolkata Knight Riders</option>
+                                        <option value=3>Royal ChallengersBangalore</option>
+                                        <option value=5>Chennai Super Kings</option>
+                                        <option value=6>Rajasthan Royals</option>
+                                        <option value=8>Delhi Capitals</option>
+                                        <option value=10>Punjab Kings</option>
+                                        <option value=11>Sunrisers Hyderabad</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="cost" class="col-md-4 col-form-labeltext-md-right">Venue</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="venue" required>
+                                        <option hidden>Select Venue</option>
+                                        <option value=0>Rajiv Gandhi InternationalStadium, Uppal</option>
+                                        <option value=1>Maharashtra Cricket AssociationStadium</option>
+                                        <option value=2>Saurashtra Cricket AssociationStadium</option>
+                                        <option value=3>Holkar Cricket Stadium</option>
+                                        <option value=4>M ChinnaswamyStadium</option>
+                                        <option value=5>Wankhede Stadium</option>
+                                        <option value=6>Eden Gardens</option>
+                                        <option value=7>Feroz Shah Kotla</option>
+                                        <option value=8>Punjab Cricket Association ISBindra Stadium, Mohali</option>
+                                        <option value=9>Green Park</option>
+                                        <option value=10>Punjab Cricket AssociationStadium, Mohali</option>
+                                        <option value=11>Sawai MansinghStadium</option>
+                                        <option value=12>MA Chidambaram Stadium,Chepauk</option>
+                                        <option value=13>Dr DY Patil SportsAcademy</option>
+                                        <option value=14>Newlands</option>
+                                        <option value=15>St George's Park</option>
+                                        <option value=16>Kingsmead</option>
+                                        <option value=17>SuperSport Park</option>
+                                        <option value=18>Buffalo Park</option>
+                                        <option value=19>New WanderersStadium</option>
+                                        <option value=20>De Beers DiamondOval</option>
+                                        <option value=21>OUTsurance Oval</option>
+                                        <option value=22>Brabourne Stadium</option>
+                                        <option value=23>Sardar Patel Stadium,Motera</option>
+                                        <option value=24>Barabati Stadium</option>
+                                        <option value=25>Vidarbha Cricket AssociationStadium, Jamtha</option>
+                                        <option value=26>Himachal Pradesh CricketAssociation Stadium</option>
+                                        <option value=27>Nehru Stadium</option>
+                                        <option value=28>Dr. Y.S. Rajasekhara ReddyACA-VDCA Cricket Stadium</option>
+                                        <option value=29>Subrata Roy SaharaStadium</option>
+                                        <option value=30>Shaheed Veer Narayan SinghInternational Stadium</option>
+                                        <option value=31>JSCA International StadiumComplex</option>
+                                        <option value=32>Sheikh Zayed Stadium</option>
+                                        <option value=33>Sharjah CricketStadium</option>
+                                        <option value=34>Dubai International CricketStadium</option>
+                                        <option value=35>M. A. ChidambaramStadium</option>
+                                        <option value=36>Feroz Shah KotlaGround</option>
+                                        <option value=37>M. ChinnaswamyStadium</option>
+                                        <option value=38>Rajiv Gandhi Intl. CricketStadium</option>
+                                        <option value=39>IS Bindra Stadium</option>
+                                        <option value=40>ACA-VDCA Stadium</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="cost" class="col-md-4 col-form-labeltext-md-right">City</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="city" required>
+                                        <option hidden>Select City</option>
+                                        <option value=0>Hyderabad</option>
+                                        <option value=1>Pune</option>
+                                        <option value=2>Rajkot</option>
+                                        <option value=3>Indore</option>
+                                        <option value=4>Bangalore</option>
+                                        <option value=5>Mumbai</option>
+                                        <option value=6>Kolkata</option>
+                                        <option value=7>Delhi</option>
+                                        <option value=8>Chandigarh</option>
+                                        <option value=9>Kanpur</option>
+                                        <option value=10>Jaipur</option>
+                                        <option value=11>Chennai</option>
+                                        <option value=12>Cape Town</option>
+                                        <option value=13>Port Elizabeth</option>
+                                        <option value=14>Durban</option>
+                                        <option value=15>Centurion</option>
+                                        <option value=16>East London</option>
+                                        <option value=17>Johannesburg</option>
+                                        <option value=18>Kimberley</option>
+                                        <option value=19>Bloemfontein</option>
+                                        <option value=20>Ahmedabad</option>
+                                        <option value=21>Cuttack</option>
+                                        <option value=22>Nagpur</option>
+                                        <option value=23>Dharamsala</option>
+                                        <option value=24>Kochi</option>
+                                        <option value=25>Visakhapatnam</option>
+                                        <option value=26>Raipur</option>
+                                        <option value=27>Ranchi</option>
+                                        <option value=28>Abu Dhabi</option>
+                                        <option value=29>Sharjah</option>
+                                        <option value=30>Dubai</option>
+                                        <option value=31>Mohali</option>
+                                        <option value=32>Bengaluru</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="start" class="col-md-4 col-form-labeltext-md-right">Toss Winner</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="toss_winner" required="true">
+                                        <option hidden>Select Toss Winner</option>
+                                        <option value=1>Mumbai Indians</option>
+                                        <option value=2>Kolkata Knight Riders</option>
+                                        <option value=3>Royal ChallengersBangalore</option>
+                                        <option value=5>Chennai Super Kings</option>
+                                        <option value=6>Rajasthan Royals</option>
+                                        <option value=8>Delhi Capitals</option>
+                                        <option value=10>Punjab Kings</option>
+                                        <option value=11>Sunrisers Hyderabad</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="end" class="col-md-4 col-form-labeltext-md-right">Toss Decision</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="toss_decision">
+                                        <option hidden>Select Toss Decision</option>
+                                        <option value=0>Field</option>
+                                        <option value=1>Bat</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">Predict
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
